@@ -38,7 +38,17 @@ messages = inbox.Items
 
 def saveattachments(subject):
     for message in messages:
-        if (message.Subject).replace('Fwd: ', '') == subject and message.Unread and message.Senton.date() == today:
+        if subject == ''  and message.Unread and message.Senton.date() == today:
+            attachments = message.Attachments
+            for attachment in message.Attachments:
+                attachment.SaveAsFile(os.path.join(path, str(attachment)))
+                print("File saved "+str(attachment))
+                try:
+                    zipExtract(attachment, path)
+                except:
+                    pass    
+                message.Unread = False
+        elif (message.Subject).replace('Fwd: ', '') == subject and message.Unread and message.Senton.date() == today:
             attachments = message.Attachments
             for attachment in message.Attachments:
                 attachment.SaveAsFile(os.path.join(path, str(attachment)))

@@ -21,8 +21,8 @@ pip install -r requirements.txt
 python index.py
 ```
 * Change the default path to download attachments in index.py file at user_path
-* Put the mail subject which you want to download for incoming mails.
-* 
+* Put the mail subject which you want to download for incoming mails or keep it empty('') to download for any mails.
+
 ## Built With
 
 * Python 3.6
